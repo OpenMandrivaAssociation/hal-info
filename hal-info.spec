@@ -1,7 +1,7 @@
 %define name hal-info
 %define version 0.0
-%define distversion 20070326
-%define release %mkrel 4.%distversion.2
+%define distversion 20070425
+%define release %mkrel 4.%distversion.1
 
 Summary: Device information for HAL
 Name: %{name}
@@ -10,14 +10,10 @@ Release: %{release}
 # generated with "make dist" from from git://anongit.freedesktop.org/git/hal-info
 Source0: %{name}-%{distversion}.tar.bz2
 Source1: 10-camera-storage.fdi
-# (fc) 0.5.7.1-6mdv add another nonname card reader
-Patch0: hal-0.5.7.1-usbcardreader.patch
-Patch1: hal-info-d420.patch
-Patch2: hal-info-z61m.patch
-Patch4: hal-info-max6100.patch
-Patch5: hal-info-vbestate.patch
-# (fc) remove duplicated entries
-Patch6: hal-info-20070326-duplicate.patch
+# (fc) 0.0-4.20070425.1mdv update to latest git snapshot (20070510)
+Patch0: hal-info-20070425-gitsnapshot20070510.patch
+# (fc) 0.0-4.20070425.1mdv re-add untested quirks and some tested ones (T43/2668 + nc4200/nc6120)
+Patch1: hal-info-20070425-quirksupdate.patch
 License: GPL
 Group: System/Kernel and hardware
 Url: http://www.freedesktop.org/Software/hal
@@ -30,12 +26,8 @@ hal-info contains device information for HAL.
 
 %prep
 %setup -q -n %{name}-%{distversion}
-%patch0 -p1 -b .usbcardreader
-%patch1 -p1 -b .d420
-%patch2 -p1 -b .z61m
-%patch4 -p1 -b .max6100
-%patch5 -p1 -b .vbestate
-%patch6 -p1 -b .duplicate
+%patch0 -p1 -b .gitsnapshot
+%patch1 -p1 -b .quirksupdate
 
 %build
 
@@ -79,7 +71,6 @@ fi
 %files
 %defattr(-,root,root)
 %doc AUTHORS NEWS README
-%dir %{_sysconfdir}/hal/fdi/*
 %{_datadir}/hal/fdi/information
 %{_datadir}/hal/fdi/preprobe
 
