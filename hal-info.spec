@@ -1,7 +1,7 @@
 %define name hal-info
 %define version 0.0
 %define distversion 20070425
-%define release %mkrel 4.%distversion.1
+%define release %mkrel 5.%distversion.1
 
 Summary: Device information for HAL
 Name: %{name}
@@ -14,6 +14,7 @@ Source1: 10-camera-storage.fdi
 Patch0: hal-info-20070425-gitsnapshot20070510.patch
 # (fc) 0.0-4.20070425.1mdv re-add untested quirks and some tested ones (T43/2668 + nc4200/nc6120)
 Patch1: hal-info-20070425-quirksupdate.patch
+Patch2: hal-info-20070425-m5a.patch
 License: GPL
 Group: System/Kernel and hardware
 Url: http://www.freedesktop.org/Software/hal
@@ -28,6 +29,7 @@ hal-info contains device information for HAL.
 %setup -q -n %{name}-%{distversion}
 %patch0 -p1 -b .gitsnapshot
 %patch1 -p1 -b .quirksupdate
+%patch2 -p1 -b .m5a
 
 %build
 
