@@ -1,35 +1,38 @@
 %define name hal-info
 %define version 0.0
-%define distversion 20070425
+%define distversion 20070725
 %define release %mkrel 5.%distversion.1
 
 Summary: Device information for HAL
 Name: %{name}
 Version: %{version}
 Release: %{release}
-# generated with "make dist" from from git://anongit.freedesktop.org/git/hal-info
-Source0: %{name}-%{distversion}.tar.bz2
+Source0: http://hal.freedesktop.org/releases/%{name}-%{distversion}.tar.gz
 Source1: 10-camera-storage.fdi
-# (fc) 0.0-4.20070425.1mdv update to latest git snapshot (20070510)
-Patch0: hal-info-20070425-gitsnapshot20070510.patch
-# (fc) 0.0-4.20070425.1mdv re-add untested quirks and some tested ones (T43/2668 + nc4200/nc6120)
-Patch1: hal-info-20070425-quirksupdate.patch
-Patch2: hal-info-20070425-m5a.patch
+# (fc) update to latest git
+Patch0: hal-info-20070725-git.patch
+# (fc) 0.0-4.20070425.1mdv re-add untested quirks
+Patch1: hal-info-20070725-untestedquirks.patch
+# (fc) 0.0-5.20070725.1mdv enable intel X.org driver v1.0 specific quirks (only for Mdv 2007.1)
+Patch2: hal-info-20070725-intelquirks.patch
 License: GPL
 Group: System/Kernel and hardware
 Url: http://www.freedesktop.org/Software/hal
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch: noarch
 Conflicts: hal < 0.5.8.1-10mdv2007.1
+BuildRequires: hal-devel
 
 %description
 hal-info contains device information for HAL.
 
 %prep
 %setup -q -n %{name}-%{distversion}
-%patch0 -p1 -b .gitsnapshot
-%patch1 -p1 -b .quirksupdate
-%patch2 -p1 -b .m5a
+%patch0 -p1 -b .git
+%patch1 -p1 -b .untestedquirks
+%if %mdkversion < 200800
+%patch2 -p1 -b .intelquirks
+%endif
 
 %build
 
