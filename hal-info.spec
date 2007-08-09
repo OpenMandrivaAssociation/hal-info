@@ -1,7 +1,7 @@
 %define name hal-info
 %define version 0.0
 %define distversion 20070725
-%define release %mkrel 5.%distversion.1
+%define release %mkrel 5.%distversion.2
 
 Summary: Device information for HAL
 Name: %{name}
@@ -15,6 +15,8 @@ Patch0: hal-info-20070725-git.patch
 Patch1: hal-info-20070725-untestedquirks.patch
 # (fc) 0.0-5.20070725.1mdv enable intel X.org driver v1.0 specific quirks (only for Mdv 2007.1)
 Patch2: hal-info-20070725-intelquirks.patch
+# (fc) 0.0-5.20070725.2mdv add patches pending merge
+Patch3: hal-info-20070725-pending.patch
 License: GPL
 Group: System/Kernel and hardware
 Url: http://www.freedesktop.org/Software/hal
@@ -33,6 +35,7 @@ hal-info contains device information for HAL.
 %if %mdkversion < 200800
 %patch2 -p1 -b .intelquirks
 %endif
+%patch3 -p1 -b .pending
 
 %build
 
