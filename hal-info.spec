@@ -1,7 +1,7 @@
 %define name hal-info
 %define version 0.0
 %define distversion 20070725
-%define release %mkrel 5.%distversion.2
+%define release %mkrel 5.%distversion.3
 
 Summary: Device information for HAL
 Name: %{name}
@@ -9,13 +9,14 @@ Version: %{version}
 Release: %{release}
 Source0: http://hal.freedesktop.org/releases/%{name}-%{distversion}.tar.gz
 Source1: 10-camera-storage.fdi
-# (fc) update to latest git
+Source2: hal-setup-keymap-keys.txt
+# (fc) update to latest git (git diff HAL_INFO_snapshot..master)
 Patch0: hal-info-20070725-git.patch
-# (fc) 0.0-4.20070425.1mdv re-add untested quirks
+# (fc) 0.0-4.20070425.1mdv re-add untested quirks (git diff master..mandriva
 Patch1: hal-info-20070725-untestedquirks.patch
-# (fc) 0.0-5.20070725.1mdv enable intel X.org driver v1.0 specific quirks (only for Mdv 2007.1)
+# (fc) 0.0-5.20070725.1mdv enable intel X.org driver v1.0 specific quirks (only for Mdv 2007.1) (git diff mandriva..mdv2007.1)
 Patch2: hal-info-20070725-intelquirks.patch
-# (fc) 0.0-5.20070725.2mdv add patches pending merge
+# (fc) 0.0-5.20070725.2mdv add patches pending merge (git diff master..pending)
 Patch3: hal-info-20070725-pending.patch
 License: GPL
 Group: System/Kernel and hardware
@@ -24,6 +25,8 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch: noarch
 Conflicts: hal < 0.5.8.1-10mdv2007.1
 BuildRequires: hal-devel
+#needed for make check
+BuildRequires: libxml2-utils
 
 %description
 hal-info contains device information for HAL.
@@ -36,6 +39,9 @@ hal-info contains device information for HAL.
 %patch2 -p1 -b .intelquirks
 %endif
 %patch3 -p1 -b .pending
+
+#install missing file
+cp %{SOURCE2} tools/
 
 %build
 
@@ -67,6 +73,9 @@ cat << EOF > $RPM_BUILD_ROOT%{_datadir}/hal/fdi/preprobe/10osvendor/10-usb-disab
   </device>
 </deviceinfo>
 EOF
+
+%check
+make check
 
 %clean
 rm -rf %{buildroot}
