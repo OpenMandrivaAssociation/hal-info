@@ -1,7 +1,7 @@
 %define name hal-info
 %define version 0.0
 %define distversion 20070725
-%define release %mkrel 5.%distversion.3
+%define release %mkrel 5.%distversion.4
 
 Summary: Device information for HAL
 Name: %{name}
@@ -24,7 +24,11 @@ Url: http://www.freedesktop.org/Software/hal
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch: noarch
 Conflicts: hal < 0.5.8.1-10mdv2007.1
-BuildRequires: hal-devel
+%if %mdkversion >= 200800
+BuildRequires: hal-devel >= 0.5.10
+%else
+BuildRequires: hal-devel 
+%endif
 #needed for make check
 BuildRequires: libxml2-utils
 
