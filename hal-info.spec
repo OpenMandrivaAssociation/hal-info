@@ -1,7 +1,7 @@
 %define name hal-info
 %define version 0.0
-%define distversion 20070725
-%define release %mkrel 5.%distversion.4
+%define distversion 20070831
+%define release %mkrel 5.%distversion.1
 
 Summary: Device information for HAL
 Name: %{name}
@@ -11,13 +11,13 @@ Source0: http://hal.freedesktop.org/releases/%{name}-%{distversion}.tar.gz
 Source1: 10-camera-storage.fdi
 Source2: hal-setup-keymap-keys.txt
 # (fc) update to latest git (git diff HAL_INFO_snapshot..master)
-Patch0: hal-info-20070725-git.patch
+#Patch0: now patch now
 # (fc) 0.0-4.20070425.1mdv re-add untested quirks (git diff master..mandriva
-Patch1: hal-info-20070725-untestedquirks.patch
+Patch1: hal-info-20070831-untestedquirks.patch
 # (fc) 0.0-5.20070725.1mdv enable intel X.org driver v1.0 specific quirks (only for Mdv 2007.1) (git diff mandriva..mdv2007.1)
 Patch2: hal-info-20070725-intelquirks.patch
 # (fc) 0.0-5.20070725.2mdv add patches pending merge (git diff master..pending)
-Patch3: hal-info-20070725-pending.patch
+#Patch3: no patch now
 License: GPL
 Group: System/Kernel and hardware
 Url: http://www.freedesktop.org/Software/hal
@@ -37,12 +37,12 @@ hal-info contains device information for HAL.
 
 %prep
 %setup -q -n %{name}-%{distversion}
-%patch0 -p1 -b .git
+#%patch0 -p1 -b .git
 %patch1 -p1 -b .untestedquirks
 %if %mdkversion < 200800
 %patch2 -p1 -b .intelquirks
 %endif
-%patch3 -p1 -b .pending
+#%patch3 -p1 -b .pending
 
 #install missing file
 cp %{SOURCE2} tools/
