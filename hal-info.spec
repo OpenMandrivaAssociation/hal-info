@@ -1,6 +1,6 @@
 %define name hal-info
 %define version 0.0
-%define distversion 20070831
+%define distversion 20070925
 %define release %mkrel 5.%distversion.1
 
 Summary: Device information for HAL
@@ -18,6 +18,10 @@ Patch1: hal-info-20070831-untestedquirks.patch
 Patch2: hal-info-20070725-intelquirks.patch
 # (fc) 0.0-5.20070725.2mdv add patches pending merge (git diff master..pending)
 #Patch3: no patch now
+# (fc) 0.0-5.20070925.5mdv add additional quirks from hal ml
+Patch4: hal-info-20070925-additionalfixes.patch
+# (fc) 0.0-5.20070925.5mdv add keymap for ACER 9300 (Mdv bug #32989)
+Patch5: hal-info-20070925-acer9300-keymap.patch
 License: GPL
 Group: System/Kernel and hardware
 Url: http://www.freedesktop.org/Software/hal
@@ -43,6 +47,8 @@ hal-info contains device information for HAL.
 %patch2 -p1 -b .intelquirks
 %endif
 #%patch3 -p1 -b .pending
+%patch4 -p1 -b .addtionalfixes
+%patch5 -p1 -b .acer9300-keymap
 
 #install missing file
 cp %{SOURCE2} tools/
