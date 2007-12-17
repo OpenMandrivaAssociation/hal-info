@@ -27,7 +27,6 @@ Patch6: hal-info-20071011-fixkeymapcheck.patch
 License: GPL
 Group: System/Kernel and hardware
 Url: http://www.freedesktop.org/Software/hal
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch: noarch
 Conflicts: hal < 0.5.8.1-10mdv2007.1
 %if %mdkversion >= 200800
