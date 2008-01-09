@@ -1,6 +1,6 @@
 %define name hal-info
 %define version 0.0
-%define distversion 20071011
+%define distversion 20071212
 %define release %mkrel 5.%distversion.1
 
 Summary: Device information for HAL
@@ -13,15 +13,13 @@ Source2: hal-setup-keymap-keys.txt
 # (fc) update to latest git (git diff HAL_INFO_snapshot..master)
 #Patch0: now patch now
 # (fc) 0.0-4.20070425.1mdv re-add untested quirks (git diff master..mandriva
-Patch1: hal-info-20070831-untestedquirks.patch
+Patch1: hal-info-20071212-untestedquirks.patch
 # (fc) 0.0-5.20070725.1mdv enable intel X.org driver v1.0 specific quirks (only for Mdv 2007.1) (git diff mandriva..mdv2007.1)
 Patch2: hal-info-20070725-intelquirks.patch
 # (fc) 0.0-5.20070725.2mdv add patches pending merge (git diff master..pending)
 #Patch3: no patch now
-# (fc) 0.0-5.20070925.5mdv add additional quirks from hal ml
-Patch4: hal-info-20070925-additionalfixes.patch
 # (fc) 0.0-5.20070925.5mdv add keymap for ACER 9300 (Mdv bug #32989)
-Patch5: hal-info-20070925-acer9300-keymap.patch
+Patch5: hal-info-20071212-acer9300-keymap.patch
 # (fc) 0.0-5.20071011.5mdv fix keymap check
 Patch6: hal-info-20071011-fixkeymapcheck.patch
 License: GPL
@@ -49,7 +47,6 @@ hal-info contains device information for HAL.
 %patch2 -p1 -b .intelquirks
 %endif
 #%patch3 -p1 -b .pending
-%patch4 -p1 -b .addtionalfixes
 %patch5 -p1 -b .acer9300-keymap
 %patch6 -p1 -b .fixkeymapcheck
 
