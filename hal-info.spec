@@ -1,7 +1,7 @@
 %define name hal-info
 %define version 0.0
 %define distversion 20071212
-%define release %mkrel 5.%distversion.1
+%define release %mkrel 5.%distversion.2
 
 Summary: Device information for HAL
 Name: %{name}
@@ -22,6 +22,9 @@ Patch2: hal-info-20070725-intelquirks.patch
 Patch5: hal-info-20071212-acer9300-keymap.patch
 # (fc) 0.0-5.20071011.5mdv fix keymap check
 Patch6: hal-info-20071011-fixkeymapcheck.patch
+# (cg) 0.0.5.20071212.2mdv Suspend fix for Dell Inspiron 6400 (aka MM061) (mdv#29448, fdo#14067)
+Patch7: hal-info-20071212-dell-mm061-suspend.patch
+
 License: GPL
 Group: System/Kernel and hardware
 Url: http://www.freedesktop.org/Software/hal
@@ -49,6 +52,7 @@ hal-info contains device information for HAL.
 #%patch3 -p1 -b .pending
 %patch5 -p1 -b .acer9300-keymap
 %patch6 -p1 -b .fixkeymapcheck
+%patch7 -p0 -b .dell-mm061-suspend
 
 #install missing file
 cp %{SOURCE2} tools/
