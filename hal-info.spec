@@ -1,6 +1,6 @@
 %define name hal-info
 %define version 0.0
-%define distversion 20080215
+%define distversion 20080313
 %define release %mkrel 5.%distversion.1
 
 Summary: Device information for HAL
@@ -9,11 +9,10 @@ Version: %{version}
 Release: %{release}
 Source0: http://hal.freedesktop.org/releases/%{name}-%{distversion}.tar.gz
 Source1: 10-camera-storage.fdi
-Source2: hal-setup-keymap-keys.txt
 # (fc) update to latest git (git diff HAL_INFO_snapshot..master)
 #Patch0: now patch now
 # (fc) 0.0-4.20070425.1mdv re-add untested quirks (git diff master..mandriva
-Patch1: hal-info-20071212-untestedquirks.patch
+Patch1: hal-info-20080313-untestedquirks.patch
 # (fc) 0.0-5.20070725.1mdv enable intel X.org driver v1.0 specific quirks (only for Mdv 2007.1) (git diff mandriva..mdv2007.1)
 Patch2: hal-info-20070725-intelquirks.patch
 # (fc) 0.0-5.20070725.2mdv add patches pending merge (git diff master..pending)
@@ -50,9 +49,6 @@ hal-info contains device information for HAL.
 #%patch3 -p1 -b .pending
 %patch5 -p1 -b .acer9300-keymap
 %patch7 -p0 -b .dell-mm061-suspend
-
-#install missing file
-cp %{SOURCE2} tools/
 
 %build
 
