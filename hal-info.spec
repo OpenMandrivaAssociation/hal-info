@@ -1,7 +1,7 @@
 %define name hal-info
 %define version 0.0
 %define distversion 20080317
-%define release %mkrel 5.%distversion.1
+%define release %mkrel 5.%distversion.2
 
 Summary: Device information for HAL
 Name: %{name}
@@ -21,6 +21,8 @@ Patch2: hal-info-20070725-intelquirks.patch
 Patch5: hal-info-20071212-acer9300-keymap.patch
 # (fc) 0.0-5.20080317.1mdv add keymap for HP nx9420 (Mdv bug #37817)
 Patch6: hal-info-20080317-nx9420.patch
+# (hk) 0.0-5.20080317.2mdv add video quirk for Clevo M720SR
+Patch7: hal-info-20080317-video-clevo-m720sr.patch
 
 License: GPL
 Group: System/Kernel and hardware
@@ -49,6 +51,7 @@ hal-info contains device information for HAL.
 #%patch3 -p1 -b .pending
 %patch5 -p1 -b .acer9300-keymap
 %patch6 -p1 -b .nx9420
+%patch7 -p1 -b .video-clevo-m720sr
 
 %build
 
