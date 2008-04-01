@@ -1,7 +1,7 @@
 %define name hal-info
 %define version 0.0
 %define distversion 20080317
-%define release %mkrel 5.%distversion.2
+%define release %mkrel 5.%distversion.3
 
 Summary: Device information for HAL
 Name: %{name}
@@ -23,6 +23,8 @@ Patch5: hal-info-20071212-acer9300-keymap.patch
 Patch6: hal-info-20080317-nx9420.patch
 # (hk) 0.0-5.20080317.2mdv add video quirk for Clevo M720SR
 Patch7: hal-info-20080317-video-clevo-m720sr.patch
+# (fc) 0.0-5.20080317.3mdv disable Multimedia keymaps for Asus Laptops, they are not needed with Mandriva kernel (Mdv bug #39669)
+Patch8: hal-info-20080317-disableasuskeymap.patch
 
 License: GPL
 Group: System/Kernel and hardware
@@ -52,6 +54,7 @@ hal-info contains device information for HAL.
 %patch5 -p1 -b .acer9300-keymap
 %patch6 -p1 -b .nx9420
 %patch7 -p1 -b .video-clevo-m720sr
+%patch8 -p1 -b .disableasuskeymap
 
 %build
 
