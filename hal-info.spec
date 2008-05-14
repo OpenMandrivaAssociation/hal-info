@@ -1,7 +1,7 @@
 %define name hal-info
 %define version 0.0
 %define distversion 20080317
-%define release %mkrel 5.%distversion.3
+%define release %mkrel 5.%distversion.4
 
 Summary: Device information for HAL
 Name: %{name}
@@ -25,6 +25,10 @@ Patch6: hal-info-20080317-nx9420.patch
 Patch7: hal-info-20080317-video-clevo-m720sr.patch
 # (fc) 0.0-5.20080317.3mdv disable Multimedia keymaps for Asus Laptops, they are not needed with Mandriva kernel (Mdv bug #39669)
 Patch8: hal-info-20080317-disableasuskeymap.patch
+# (fc) 0.0-5.20080317.4mdv fix suspend quirk for EEE PC 900 (Mdv bug #40578)
+Patch9: hal-info-20080317-eeepc900.patch
+# (fc) 0.0-5.20080317.4mdv fix delete key not responsive on Acer Extensa 5220 (Mdv bug #37570) (GIT)
+Patch10: hal-info-20080317-fixacerdelete.patch
 
 License: GPL
 Group: System/Kernel and hardware
@@ -55,6 +59,8 @@ hal-info contains device information for HAL.
 %patch6 -p1 -b .nx9420
 %patch7 -p1 -b .video-clevo-m720sr
 %patch8 -p1 -b .disableasuskeymap
+%patch9 -p1 -b .eeepc900
+%patch10 -p1 -b .fixacerdelete
 
 %build
 
