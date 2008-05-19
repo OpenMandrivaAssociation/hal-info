@@ -1,7 +1,7 @@
 %define name hal-info
 %define version 0.0
 %define distversion 20080317
-%define release %mkrel 5.%distversion.4
+%define release %mkrel 5.%distversion.5
 
 Summary: Device information for HAL
 Name: %{name}
@@ -29,6 +29,8 @@ Patch8: hal-info-20080317-disableasuskeymap.patch
 Patch9: hal-info-20080317-eeepc900.patch
 # (fc) 0.0-5.20080317.4mdv fix delete key not responsive on Acer Extensa 5220 (Mdv bug #37570) (GIT)
 Patch10: hal-info-20080317-fixacerdelete.patch
+# (pt) 0.0-5.20080317.5mdv fix resume on AIRIS
+Patch11: hal-info-20080317-airis.patch
 
 License: GPL
 Group: System/Kernel and hardware
@@ -61,6 +63,7 @@ hal-info contains device information for HAL.
 %patch8 -p1 -b .disableasuskeymap
 %patch9 -p1 -b .eeepc900
 %patch10 -p1 -b .fixacerdelete
+%patch11 -p1 -b .airis
 
 %build
 
