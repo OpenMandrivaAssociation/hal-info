@@ -1,7 +1,7 @@
 %define name hal-info
 %define version 0.0
-%define distversion 20080317
-%define release %mkrel 5.%distversion.5
+%define distversion 20080508
+%define release %mkrel 5.%distversion.1
 
 Summary: Device information for HAL
 Name: %{name}
@@ -12,23 +12,19 @@ Source1: 10-camera-storage.fdi
 # (fc) update to latest git (git diff HAL_INFO_snapshot..master)
 #Patch0: now patch now
 # (fc) 0.0-4.20070425.1mdv re-add untested quirks (git diff master..mandriva
-Patch1: hal-info-20080313-untestedquirks.patch
+Patch1: hal-info-20080508-untestedquirks.patch
 # (fc) 0.0-5.20070725.1mdv enable intel X.org driver v1.0 specific quirks (only for Mdv 2007.1) (git diff mandriva..mdv2007.1)
 Patch2: hal-info-20070725-intelquirks.patch
 # (fc) 0.0-5.20070725.2mdv add patches pending merge (git diff master..pending)
 #Patch3: no patch now
 # (fc) 0.0-5.20070925.5mdv add keymap for ACER 9300 (Mdv bug #32989)
 Patch5: hal-info-20071212-acer9300-keymap.patch
-# (fc) 0.0-5.20080317.1mdv add keymap for HP nx9420 (Mdv bug #37817)
-Patch6: hal-info-20080317-nx9420.patch
 # (hk) 0.0-5.20080317.2mdv add video quirk for Clevo M720SR
 Patch7: hal-info-20080317-video-clevo-m720sr.patch
 # (fc) 0.0-5.20080317.3mdv disable Multimedia keymaps for Asus Laptops, they are not needed with Mandriva kernel (Mdv bug #39669)
 Patch8: hal-info-20080317-disableasuskeymap.patch
 # (fc) 0.0-5.20080317.4mdv fix suspend quirk for EEE PC 900 (Mdv bug #40578)
-Patch9: hal-info-20080317-eeepc900.patch
-# (fc) 0.0-5.20080317.4mdv fix delete key not responsive on Acer Extensa 5220 (Mdv bug #37570) (GIT)
-Patch10: hal-info-20080317-fixacerdelete.patch
+Patch9: hal-info-20080508-eeepc900.patch
 # (pt) 0.0-5.20080317.5mdv fix resume on AIRIS
 Patch11: hal-info-20080317-airis.patch
 
@@ -58,11 +54,9 @@ hal-info contains device information for HAL.
 %endif
 #%patch3 -p1 -b .pending
 %patch5 -p1 -b .acer9300-keymap
-%patch6 -p1 -b .nx9420
 %patch7 -p1 -b .video-clevo-m720sr
 %patch8 -p1 -b .disableasuskeymap
 %patch9 -p1 -b .eeepc900
-%patch10 -p1 -b .fixacerdelete
 %patch11 -p1 -b .airis
 
 %build
