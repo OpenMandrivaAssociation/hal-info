@@ -1,7 +1,7 @@
 %define name hal-info
 %define version 0.0
 %define distversion 20080508
-%define release %mkrel 5.%distversion.1
+%define release %mkrel 2.%distversion.1
 
 Summary: Device information for HAL
 Name: %{name}
