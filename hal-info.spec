@@ -1,7 +1,7 @@
 %define name hal-info
 %define version 0.0
 %define distversion 20080508
-%define release %mkrel 2.%distversion.1
+%define release %mkrel 2.%distversion.2
 
 Summary: Device information for HAL
 Name: %{name}
@@ -27,6 +27,8 @@ Patch8: hal-info-20080317-disableasuskeymap.patch
 Patch9: hal-info-20080508-eeepc900.patch
 # (pt) 0.0-5.20080317.5mdv fix resume on AIRIS
 Patch11: hal-info-20080317-airis.patch
+# (blino) 0.0-5.20080317.5mdv blacklist CD drive of the Huawei E220 USB HSDPA modem (GIT)
+Patch12: hal-info-blacklist-huawei-hsdpa-cd-drive.patch
 
 License: GPL
 Group: System/Kernel and hardware
@@ -58,6 +60,7 @@ hal-info contains device information for HAL.
 %patch8 -p1 -b .disableasuskeymap
 %patch9 -p1 -b .eeepc900
 %patch11 -p1 -b .airis
+%patch12 -p1 -b .blacklist-huawei
 
 %build
 
