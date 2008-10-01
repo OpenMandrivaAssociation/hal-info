@@ -1,6 +1,6 @@
 %define name hal-info
 %define version 0.0
-%define distversion 20080929
+%define distversion 20081001
 %define release %mkrel 5.%distversion.1
 
 Summary: Device information for HAL
@@ -25,6 +25,8 @@ Patch9: hal-info-20080508-eeepc900.patch
 Patch11: hal-info-20080317-airis.patch
 # (fc) 0.0-5.20080929.1mdv fix check with latest sony keymap
 Patch12: hal-info-20080929-fixcheck.patch
+# (fc) 0.0-5.20081001.1mdv add requires_eject for N82
+Patch13: hal-info-20081001-n82.patch
 
 License: GPL
 Group: System/Kernel and hardware
@@ -53,6 +55,7 @@ hal-info contains device information for HAL.
 %patch9 -p1 -b .eeepc900
 %patch11 -p1 -b .airis
 %patch12 -p1 -b .fixcheck
+%patch13 -p1 -b .n82
 
 %build
 
