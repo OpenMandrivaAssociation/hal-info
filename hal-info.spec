@@ -1,18 +1,18 @@
 %define name hal-info
 %define version 0.0
-%define distversion 20081001
+%define distversion 20081127
 %define release %mkrel 5.%distversion.1
 
 Summary: Device information for HAL
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: http://hal.freedesktop.org/releases/%{name}-%{distversion}.tar.gz
+Source0: http://hal.freedesktop.org/releases/%{name}-%{distversion}.tar.bz2
 Source1: 10-camera-storage.fdi
 # (fc) update to latest git (git diff HAL_INFO_snapshot..master)
 #Patch0: now patch now
 # (fc) 0.0-4.20070425.1mdv re-add untested quirks (git diff master..mandriva
-Patch1: hal-info-20080929-untestedquirks.patch
+Patch1: hal-info-20081127-untestedquirks.patch
 # (fc) 0.0-5.20070725.2mdv add patches pending merge (git diff master..pending)
 #Patch3: no patch now
 # (hk) 0.0-5.20080317.2mdv add video quirk for Clevo M720SR
@@ -21,10 +21,6 @@ Patch7: hal-info-20080317-video-clevo-m720sr.patch
 Patch8: hal-info-20080317-disableasuskeymap.patch
 # (fc) 0.0-5.20080317.4mdv fix suspend quirk for EEE PC 900 (Mdv bug #40578)
 Patch9: hal-info-20080508-eeepc900.patch
-# (pt) 0.0-5.20080317.5mdv fix resume on AIRIS
-Patch11: hal-info-20080317-airis.patch
-# (fc) 0.0-5.20080929.1mdv fix check with latest sony keymap
-Patch12: hal-info-20080929-fixcheck.patch
 # (fc) 0.0-5.20081001.1mdv add requires_eject for N82
 Patch13: hal-info-20081001-n82.patch
 
@@ -53,8 +49,6 @@ hal-info contains device information for HAL.
 %patch7 -p1 -b .video-clevo-m720sr
 %patch8 -p1 -b .disableasuskeymap
 %patch9 -p1 -b .eeepc900
-%patch11 -p1 -b .airis
-%patch12 -p1 -b .fixcheck
 %patch13 -p1 -b .n82
 
 %build
