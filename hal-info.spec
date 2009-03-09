@@ -1,6 +1,6 @@
 %define name hal-info
 %define version 0.0
-%define distversion 20090202
+%define distversion 20090309
 %define release %mkrel 5.%distversion.1
 
 %define git_url git://git.freedesktop.org/git/hal-info
@@ -14,13 +14,9 @@ Source1: 10-camera-storage.fdi
 # (fc) update to latest git (git diff HAL_INFO_snapshot..master)
 #Patch0: now patch now
 # (fc) 0.0-4.20070425.1mdv re-add untested quirks (git diff master..mandriva
-Patch1: hal-info-20090202-untestedquirks.patch
+Patch1: hal-info-20090309-untestedquirks.patch
 # (fc) 0.0-5.20070725.2mdv add patches pending merge (git diff master..pending)
 #Patch3: no patch now
-# (fc) 0.0-5.20080317.3mdv disable Multimedia keymaps for Asus Laptops, they are not needed with Mandriva kernel (Mdv bug #39669)
-Patch8: hal-info-20080317-disableasuskeymap.patch
-# (fc) 0.0-5.20080317.4mdv fix suspend quirk for EEE PC 900 (Mdv bug #40578)
-Patch9: hal-info-20080508-eeepc900.patch
 
 License: GPL
 Group: System/Kernel and hardware
@@ -44,8 +40,6 @@ hal-info contains device information for HAL.
 #%patch0 -p1 -b .git
 %patch1 -p1 -b .untestedquirks
 #%patch3 -p1 -b .pending
-%patch8 -p1 -b .disableasuskeymap
-%patch9 -p1 -b .eeepc900
 
 %build
 
