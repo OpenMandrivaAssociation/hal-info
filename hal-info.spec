@@ -1,6 +1,6 @@
 %define name hal-info
 %define version 0.0
-%define distversion 20090414
+%define distversion 20090716
 %define release %mkrel 5.%distversion.1
 
 %define git_url git://git.freedesktop.org/git/hal-info
@@ -14,11 +14,11 @@ Source1: 10-camera-storage.fdi
 # (fc) update to latest git (git diff HAL_INFO_snapshot..master)
 #Patch0: now patch now
 # (fc) 0.0-4.20070425.1mdv re-add untested quirks (git diff master..mandriva
-Patch1: hal-info-20090309-untestedquirks.patch
+Patch1: hal-info-20090716-untestedquirks.patch
 # (fc) 0.0-5.20070725.2mdv add patches pending merge (git diff master..pending)
 #Patch3: no patch now
 
-License: GPL
+License: AFL or GPLv2
 Group: System/Kernel and hardware
 Url: http://www.freedesktop.org/Software/hal
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
