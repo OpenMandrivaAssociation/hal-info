@@ -1,6 +1,6 @@
 %define name hal-info
 %define version 0.0
-%define distversion 20090716
+%define distversion 20091130
 %define release %mkrel 5.%distversion.1
 
 %define git_url git://git.freedesktop.org/git/hal-info
@@ -9,7 +9,7 @@ Summary: Device information for HAL
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: http://hal.freedesktop.org/releases/%{name}-%{distversion}.tar.gz
+Source0: http://hal.freedesktop.org/releases/%{name}-%{distversion}.tar.bz2
 Source1: 10-camera-storage.fdi
 # (fc) update to latest git (git diff HAL_INFO_snapshot..master)
 #Patch0: now patch now
