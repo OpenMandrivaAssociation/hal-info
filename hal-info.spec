@@ -1,7 +1,7 @@
 %define name hal-info
 %define version 0.0
 %define distversion 20091130
-%define release %mkrel 5.%distversion.2
+%define release %mkrel 5.%distversion.3
 
 %define git_url git://git.freedesktop.org/git/hal-info
 
