@@ -51,7 +51,7 @@ rm -rf %{buildroot}
 %makeinstall_std
 install %{SOURCE1} %{buildroot}%{_datadir}/hal/fdi/information/10freedesktop/10-camera-storage.fdi
 
-cat << EOF > $RPM_BUILD_ROOT%{_datadir}/hal/fdi/preprobe/10osvendor/10-usb-disable-mediacheck.fdi
+cat << EOF > %{buildroot}%{_datadir}/hal/fdi/preprobe/10osvendor/10-usb-disable-mediacheck.fdi
 <?xml version="1.0" encoding="ISO-8859-1"?> <!-- -*- SGML -*- -->
 
 <deviceinfo version="0.2">
