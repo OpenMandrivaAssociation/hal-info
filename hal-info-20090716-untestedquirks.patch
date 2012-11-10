@@ -1,0 +1,227 @@
+From cbf5c180d6e1718e5868342cecf910404163c7db Mon Sep 17 00:00:00 2001
+From: Frederic Crozat <fcrozat@mandriva.com>
+Date: Mon, 27 Jul 2009 15:18:59 +0200
+Subject: [PATCH] Untested quirks
+
+---
+ .../10freedesktop/20-video-quirk-pm-acer.fdi       |    7 +++++--
+ .../10freedesktop/20-video-quirk-pm-asus.fdi       |    3 ++-
+ .../10freedesktop/20-video-quirk-pm-dell.fdi       |    6 ++++--
+ .../10freedesktop/20-video-quirk-pm-fujitsu.fdi    |    5 +++++
+ .../10freedesktop/20-video-quirk-pm-hp.fdi         |    8 +++++++-
+ .../10freedesktop/20-video-quirk-pm-ibm.fdi        |   12 ++++++++++++
+ .../10freedesktop/20-video-quirk-pm-misc.fdi       |   10 ++++++++++
+ .../10freedesktop/20-video-quirk-pm-sony.fdi       |    3 ++-
+ .../10freedesktop/20-video-quirk-pm-toshiba.fdi    |   12 ++++++++++--
+ 9 files changed, 57 insertions(+), 9 deletions(-)
+
+diff --git a/fdi/information/10freedesktop/20-video-quirk-pm-acer.fdi b/fdi/information/10freedesktop/20-video-quirk-pm-acer.fdi
+index f120a4c..485c5c6 100644
+--- a/fdi/information/10freedesktop/20-video-quirk-pm-acer.fdi
++++ b/fdi/information/10freedesktop/20-video-quirk-pm-acer.fdi
+@@ -10,7 +10,8 @@
+           <merge key="power_management.quirk.s3_bios" type="bool">true</merge>
+           <merge key="power_management.quirk.s3_mode" type="bool">true</merge>
+         </match>
+-        <match key="system.hardware.product" contains_outof="3000;4100">
++	<!-- untested quirks 290, 8100 -->
++        <match key="system.hardware.product" contains_outof="290;3000;4100;8100">
+           <merge key="power_management.quirk.vbe_post" type="bool">true</merge>
+           <merge key="power_management.quirk.vbestate_restore" type="bool">true</merge>
+         </match>
+@@ -61,6 +62,7 @@
+       </match>
+ 
+       <match key="system.hardware.product" prefix="Aspire">
++
+         <match key="system.hardware.product" contains="5050">
+           <merge key="power_management.quirk.s3_bios" type="bool">true</merge>
+         </match>
+@@ -84,7 +86,8 @@
+         <match key="system.hardware.product" contains="1640">
+           <merge key="power_management.quirk.vbestate_restore" type="bool">true</merge>
+         </match>
+-        <match key="system.hardware.product" contains_outof="1500;3000">
++	<!--  untested quirks : 2000, 3000 -->
++        <match key="system.hardware.product" contains_outof="1500;3000;2000;3000">
+           <merge key="power_management.quirk.vbe_post" type="bool">true</merge>
+           <merge key="power_management.quirk.vbestate_restore" type="bool">true</merge>
+         </match>
+diff --git a/fdi/information/10freedesktop/20-video-quirk-pm-asus.fdi b/fdi/information/10freedesktop/20-video-quirk-pm-asus.fdi
+index 4022c67..e5a81cd 100644
+--- a/fdi/information/10freedesktop/20-video-quirk-pm-asus.fdi
++++ b/fdi/information/10freedesktop/20-video-quirk-pm-asus.fdi
+@@ -23,7 +23,8 @@
+       <match key="system.hardware.product" prefix="W7J">
+         <merge key="power_management.quirk.vbemode_restore" type="bool">true</merge>
+       </match>
+-      <match key="system.hardware.product" prefix_outof="L3000D;M3N ;U3S ;X51RL ">
++      <!-- untested quirks : L7000G -->
++      <match key="system.hardware.product" prefix_outof="L3000D;M3N ;U3S ;X51RL ;L7000G">
+         <merge key="power_management.quirk.vbe_post" type="bool">true</merge>
+         <merge key="power_management.quirk.vbestate_restore" type="bool">true</merge>
+       </match>
+diff --git a/fdi/information/10freedesktop/20-video-quirk-pm-dell.fdi b/fdi/information/10freedesktop/20-video-quirk-pm-dell.fdi
+index 033759a..4130e79 100644
+--- a/fdi/information/10freedesktop/20-video-quirk-pm-dell.fdi
++++ b/fdi/information/10freedesktop/20-video-quirk-pm-dell.fdi
+@@ -24,7 +24,8 @@
+           <merge key="power_management.quirk.vbe_post" type="bool">true</merge>
+           <merge key="power_management.quirk.vbemode_restore" type="bool">true</merge>
+         </match>
+-        <match key="system.hardware.product" contains_outof="C400;C840;D500;D505;D800;X200">
++	<!-- untested quirks 110L, D510 -->
++        <match key="system.hardware.product" contains_outof="C400;C840;D500;D505;D800;X200;110L;D510">
+           <merge key="power_management.quirk.vbe_post" type="bool">true</merge>
+           <merge key="power_management.quirk.vbestate_restore" type="bool">true</merge>
+         </match>
+@@ -74,7 +75,8 @@
+             <merge key="power_management.quirk.no_fb" type="bool">true</merge>
+           </match>
+         </match>
+-        <match key="system.hardware.product" contains_outof="5150;8000;8500">
++	<!-- untested quirks : 1200, 6000, 8100, 8200 -->
++        <match key="system.hardware.product" contains_outof="5150;8000;8500;1200;6000;8100;8200">
+           <merge key="power_management.quirk.vbe_post" type="bool">true</merge>
+           <merge key="power_management.quirk.vbestate_restore" type="bool">true</merge>
+         </match>
+diff --git a/fdi/information/10freedesktop/20-video-quirk-pm-fujitsu.fdi b/fdi/information/10freedesktop/20-video-quirk-pm-fujitsu.fdi
+index 222c0eb..85d6c93 100644
+--- a/fdi/information/10freedesktop/20-video-quirk-pm-fujitsu.fdi
++++ b/fdi/information/10freedesktop/20-video-quirk-pm-fujitsu.fdi
+@@ -41,6 +41,11 @@
+       </match>
+ 
+       <match key="system.hardware.product" contains_ncase="lifebook">
++	      <!-- untested quirks -->
++        <match key="system.hardware.product" contains_outof="S Series;S6120">
++          <merge key="power_management.quirk.vbe_post" type="bool">true</merge>
++          <merge key="power_management.quirk.vbestate_restore" type="bool">true</merge>
++        </match>
+         <match key="system.hardware.product" contains_outof="P7010D;S2110">
+           <merge key="power_management.quirk.s3_bios" type="bool">true</merge>
+         </match>
+diff --git a/fdi/information/10freedesktop/20-video-quirk-pm-hp.fdi b/fdi/information/10freedesktop/20-video-quirk-pm-hp.fdi
+index cd8f41e..07029e2 100644
+--- a/fdi/information/10freedesktop/20-video-quirk-pm-hp.fdi
++++ b/fdi/information/10freedesktop/20-video-quirk-pm-hp.fdi
+@@ -74,7 +74,13 @@
+       </match>
+     </match>
+ 
+-    <match key="system.hardware.vendor" prefix="Hewlett-Packard">
++    <match key="system.rdware.vendor" prefix="Hewlett-Packard">
++     <!-- untested quirks -->
++     <match key="system.hardware.product" contains_outof="nc8230;dv1000;zt3000;zd7000;Tx1100;TR1105">
++       <merge key="power_management.quirk.vbe_post" type="bool">true</merge>
++       <merge key="power_management.quirk.vbestate_restore" type="bool">true</merge>
++     </match>
++
+       <match key="system.hardware.product" contains_outof="V2000 (EP381UA#;X1000 (DK454AV); 6715s;6820s">
+         <merge key="power_management.quirk.s3_bios" type="bool">true</merge>
+       </match>
+diff --git a/fdi/information/10freedesktop/20-video-quirk-pm-ibm.fdi b/fdi/information/10freedesktop/20-video-quirk-pm-ibm.fdi
+index 335310f..dc9c9b6 100644
+--- a/fdi/information/10freedesktop/20-video-quirk-pm-ibm.fdi
++++ b/fdi/information/10freedesktop/20-video-quirk-pm-ibm.fdi
+@@ -3,6 +3,18 @@
+   <device>
+     <match key="system.hardware.vendor" string="IBM">
+ 
++      <!-- untested quirks -->
++      <match key="system.hardware.product" prefix_outof="2682;2683;2692;2693;2696;2698;2699;2723;2724;2897;1829;1830;1831;1833;1836;1840;1841;1847;1848;1849;1850;1870;2647;2648;475S;2375;2884;2885;2369;2370;2371;2372;1864;1865;2526;2527;2528;1866;1867">
++       <merge key="power_management.quirk.vbe_post" type="bool">true</merge>
++       <merge key="power_management.quirk.vbestate_restore" type="bool">true</merge>
++      </match>
++      <!-- untested quirks -->
++      <match key="system.hardware.product" prefix_outof="2884;2885;2890;2891;">
++       <merge key="power_management.quirk.vbe_post" type="bool">true</merge>
++       <merge key="power_management.quirk.vbestate_restore" type="bool">true</merge>
++       <merge key="power_management.quirk.radeon_off" type="bool">true</merge>
++      </match>
++
+       <match key="system.hardware.version" string="ThinkPad R50e">
+ 	<merge key="power_management.quirk.save_pci" type="bool">true</merge>
+ 	<merge key="power_management.quirk.dpms_on" type="bool">true</merge>
+diff --git a/fdi/information/10freedesktop/20-video-quirk-pm-misc.fdi b/fdi/information/10freedesktop/20-video-quirk-pm-misc.fdi
+index 4f08a94..9e3d56d 100644
+--- a/fdi/information/10freedesktop/20-video-quirk-pm-misc.fdi
++++ b/fdi/information/10freedesktop/20-video-quirk-pm-misc.fdi
+@@ -328,6 +328,11 @@
+         <merge key="power_management.quirk.vbe_post" type="bool">true</merge>
+         <merge key="power_management.quirk.no_fb" type="bool">true</merge>
+       </match>
++      <!-- untested quirk -->
++      <match key="system.hardware.product" contains="G556 Centrino">
++        <merge key="power_management.quirk.vbe_post" type="bool">true</merge>
++        <merge key="power_management.quirk.vbestate_restore" type="bool">true</merge>
++      </match>
+     </match>
+   </device>
+ 
+@@ -458,6 +463,11 @@
+ 
+   <device>
+     <match key="system.hardware.vendor" string="SHARP">
++       <!-- untested quirk-->
++      <match key="system.hardware.product" contains="PC-MM20 Series">
++        <merge key="power_management.quirk.vbe_post" type="bool">true</merge>
++        <merge key="power_management.quirk.vbestate_restore" type="bool">true</merge>
++      </match>
+       <match key="system.hardware.product" prefix="PC-AR10 ">
+         <merge key="power_management.quirk.none" type="bool">true</merge>
+       </match>
+diff --git a/fdi/information/10freedesktop/20-video-quirk-pm-sony.fdi b/fdi/information/10freedesktop/20-video-quirk-pm-sony.fdi
+index 7e876a2..3318d69 100644
+--- a/fdi/information/10freedesktop/20-video-quirk-pm-sony.fdi
++++ b/fdi/information/10freedesktop/20-video-quirk-pm-sony.fdi
+@@ -34,7 +34,8 @@
+ 	<merge key="power_management.quirk.vbe_post" type="bool">true</merge>
+ 	<merge key="power_management.quirk.vbemode_restore" type="bool">true</merge>
+       </match>
+-      <match key="system.hardware.product" contains="PCG-FX805">
++      <!-- untested quirk : PCG-U101 -->
++      <match key="system.hardware.product" contains_outof="PCG-FX805;PCG-U101">
+ 	<merge key="power_management.quirk.vbe_post" type="bool">true</merge>
+ 	<merge key="power_management.quirk.vbestate_restore" type="bool">true</merge>
+       </match>
+diff --git a/fdi/information/10freedesktop/20-video-quirk-pm-toshiba.fdi b/fdi/information/10freedesktop/20-video-quirk-pm-toshiba.fdi
+index 2c3113b..5499047 100644
+--- a/fdi/information/10freedesktop/20-video-quirk-pm-toshiba.fdi
++++ b/fdi/information/10freedesktop/20-video-quirk-pm-toshiba.fdi
+@@ -2,6 +2,12 @@
+ <deviceinfo version="0.2">
+   <device>
+     <match key="system.hardware.vendor" string="TOSHIBA">
++<!-- untested quirk -->
++     <match key="system.hardware.product" prefix="libretto U100">
++       <merge key="power_management.quirk.vbe_post" type="bool">true</merge>
++       <merge key="power_management.quirk.vbestate_restore" type="bool">true</merge>
++     </match>
++
+       <!-- Satellite Laptops -->
+       <match key="system.hardware.product" prefix="Satellite">
+         <match key="system.hardware.product" contains=" M30X">
+@@ -32,7 +38,8 @@
+           <merge key="power_management.quirk.vbe_post" type="bool">true</merge>
+           <merge key="power_management.quirk.vbemode_restore" type="bool">true</merge>
+         </match>
+-        <match key="system.hardware.product" contains="A300D">
++	<!-- untested quirk : 1900 -->
++        <match key="system.hardware.product" contains_outof="A300D; 1900">
+           <merge key="power_management.quirk.vbe_post" type="bool">true</merge>
+           <merge key="power_management.quirk.vbestate_restore" type="bool">true</merge>
+         </match>
+@@ -79,7 +86,8 @@
+         <match key="system.hardware.product" contains="M300">
+           <merge key="power_management.quirk.s3_mode" type="bool">true</merge>
+         </match>
+-        <match key="system.hardware.product" contains="A100">
++	<!-- untested quirks : A200,M200 -->
++        <match key="system.hardware.product" contains_outof="A10;A200;M2000">
+           <merge key="power_management.quirk.vbe_post" type="bool">true</merge>
+           <merge key="power_management.quirk.vbestate_restore" type="bool">true</merge>
+         </match>
+-- 
+1.6.3.3
+
