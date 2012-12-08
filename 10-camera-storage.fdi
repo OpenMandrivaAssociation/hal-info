@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> <!-- -*- SGML -*- --> 
+
+<!-- Set storage capability for camera with access method "storage"  -->
+
+<deviceinfo version="0.2">
+  <device>
+    <match key="info.category" string="storage">
+      <match key="@storage.physical_device:info.capabilities" exists="true">
+        <match key="@storage.physical_device:info.capabilities"
+contains="camera">
+          <append key="info.capabilities" type="strlist">camera</append>
+        </match>
+      </match>
+    </match>
+  </device>
+</deviceinfo>
